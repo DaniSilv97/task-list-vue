@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: white;
+}
+
+input:not([type="radio"]):not([type="checkbox"]), button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: initial;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg, #080809 0%, #080809 25%, #080809 51%, #0087ff 100%);
+    -webkit-animation: AnimateBG 20s ease infinite;
+            animation: AnimateBG 20s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+h1{
+    display: none;
+}
+.main-wrapper{
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: #3d3d3f;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px#1e1d1f;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+h2, h2 input{
+    font-size: 1.150rem;
+    font-weight: 700;
+}
+h2 input{
+    background: none;
+    border: 0;
+    color: #BFBDC1;
+}
+h2 input:focus{
+    color: #0087ff;
+}
+
+nav{
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+.button-holder{
+    display: flex;
+    width: 130px;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #313133;
+    border-radius: 15px;
+}
+.button{
+    background-color: #57565a;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    box-shadow: 3px 3px 5px#1e1d1f;
+}
+.highlight-button{
+    background-color: #0087ff;
+}

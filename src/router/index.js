@@ -6,12 +6,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
+  },/*
   {
     path: '/colors',
     name: 'Colors',
     component: Colors
-  }
+  }*/
 ]
 
 const router = createRouter({
