@@ -1,14 +1,16 @@
 <template>
-  <div class ="task-list shadow">
+  <div :id="thisList.id" class ="task-list shadow" v-if="!isAListSelected.state || isThisSelected">
     <div class="list-main-container shadow">
       <div class="list-name-container">
-        <h2 class="list-name">Task List Name</h2>
-        <button class="button expand shadow">more...</button>
+        <h2 class="list-name">{{ thisList.name }}</h2>
+        <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
       </div>
-      <div class="list-tasks-container">
-        <Task/>
-        <Task/>
-        <Task/>
+      <div v-if="isThisSelected">
+        <div class="list-tasks-container">
+          <Task/>
+          <Task/>
+          <Task/>
+        </div>
       </div>
     </div>
   </div>
@@ -16,9 +18,37 @@
 
 <script>
 import Task from "./Task.vue"
+
 export default {
-  
-  components: { Task }
+  props:['thisList', 'isAListSelected'],
+  components: { Task },
+  data(){  
+    return{
+      /*showTasks: false,*/
+      moreLess: 'More...',
+      isThisSelected: false,
+    }
+  },
+  methods:{
+    doShowTasks(){
+      if(!this.isThisSelected){
+        this.moreLess = 'Less...'
+        this.isThisSelected = true
+        this.isAListSelected.state = true
+      } else{
+        this.moreLess = 'More...'
+        this.isThisSelected = false
+        this.isAListSelected.state = false
+      }
+      
+      
+      console.log(this.isAListSelected)
+    }
+  },
+  mounted(){
+    console.log('mounted:',this.thisList)
+    console.log(this.isAListSelected)
+  }
 }
 </script>
 
