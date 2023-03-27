@@ -1,3 +1,19 @@
+:root{
+    --black: #080809;
+    --blue: #0087ff;
+    --lightestGrey: #BFBDC1;
+    --lightGrey: #57565a;
+    --grey: #3d3d3f;
+    --darkGrey: #313133;
+    --darkestGrey:#1e1d1f;
+
+    --longTime: rgb(255, 255, 255);
+    --enoughTime: #ffff7d;
+    --shortTime: #ffbe32;
+    --noTime: #ff0000;
+
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -106,8 +122,11 @@ nav{
     text-decoration: none;
     color: white;
     font-weight: 700;
-    box-shadow: 3px 3px 5px#1e1d1f;
 }
-.highlight-button{
+.router-link-active{
     background-color: #0087ff;
 }
+.shadow{
+    box-shadow: 3px 3px 5px#1e1d1f;
+}
+

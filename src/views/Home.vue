@@ -1,13 +1,18 @@
 <template>
-  <div class="home">
-
+  <div class="main-wrapper flex-column">
+    <TaskList/>
+    <TaskList/>
   </div>
 </template>
 
 <script>
-
+import TaskList from '../components/TaskList.vue'
 export default {
   name: 'Home',
-  components: {}
+  components: { TaskList }
 }
 </script>
+
+<style>
+
+</style>
