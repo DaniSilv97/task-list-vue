@@ -36,7 +36,8 @@ export default {
     },
     nextDayDate(){
       const today = new Date()
-      const nextDay = (today.getFullYear() +'-'+ today.getMonth() +'-'+ today.getDate())
+      const month = today.getMonth()+1
+      const nextDay = (today.getFullYear() +'-'+ month +'-'+ today.getDate())
       return nextDay
     }
   },

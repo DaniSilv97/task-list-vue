@@ -8,7 +8,7 @@
       <div v-if="isThisSelected">
         <div class="list-tasks-container">
           <template v-for="task in thisList.tasks" :key="task">
-            <Task :thisTask="task"/>
+            <Task :thisTask="task" :thisList="thisList"/>
           </template>
           <AddTask v-if="isAListSelected.state" :thisList="thisList"/>
         </div>

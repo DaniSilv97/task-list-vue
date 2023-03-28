@@ -3,19 +3,53 @@
     <input type="checkbox">
     <div class="task-name-date">
       <h4 class="task-name">{{ thisTask.name }}</h4>
-      <p class="task-date">doeDate</p>
+      <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
     </div>
 
-    <button class="button shadow delete">Delete</button>
+    <button class="button shadow delete" @click="doDelete">Delete</button>
   </div>
 </template>
 
 <script>
 
 export default {
-  props:['thisTask'],
-  mounted(){
-    console.log(this.thisTask)
+  props:['thisTask', 'thisList'],
+  data(){
+    return{
+      
+    }
+  },
+  methods:{
+    newDate(){
+      const date = new Date(this.thisTask.date)
+      return date
+      },
+    showDate(){
+      const months = ['Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+      const selfMonth = parseInt(this.newDate().getMonth())
+      const monthAsString = months[selfMonth]
+      return `${monthAsString} ${this.newDate().getDate()}, ${this.newDate().getFullYear()}`
+    },
+    doDelete(){
+      this.thisList.tasks.splice(this.thisList.tasks.indexOf(this.thisTask),1)
+    }
+  },
+  computed:{
+    dueDateColor(){
+      const currentDateObj = new Date()
+      const diffInDays = (this.newDate().getTime() - currentDateObj.getTime()) / (1000 * 3600 * 24);
+      if(currentDateObj >= this.newDate()){
+            return('var(--noTime)')
+        } else {
+            if (diffInDays <= 3){
+                return('var(--shortTime)')
+            } else if (diffInDays <= 10){
+                return('var(--enoughTime)')
+            } else{
+                return('var(--longTime)')
+            }
+        }
+    } 
   }
 }
 </script>
