@@ -3,7 +3,7 @@
     <div class="add-text task-text" >
       <input class="input-text" type="text" placeholder="e. g. Schoolwork" v-model="newTaskName">
     </div>
-    <input class="new-date" type="date" v-model="dueDate">
+    <input v-if="dueDate" class="new-date" type="date" v-model="dueDate">
     <button class="add-task-button button" @click="addTask">Add task</button>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   data(){
     return{
       newTaskName: '',
-      dueDate: ''
+      dueDate: null
     }
   },
   methods:{
@@ -36,11 +36,15 @@ export default {
     },
     nextDayDate(){
       const today = new Date()
-      const month = today.getMonth()+1
-      const nextDay = (today.getFullYear() +'-'+ month +'-'+ today.getDate())
+      const month = String(today.getMonth()+1).padStart(2,0)
+      const tomorrowDay = today.getDate()+1
+      const nextDay = (today.getFullYear() +'-'+ month +'-'+ tomorrowDay)
       return nextDay
     }
   },
+  created(){
+    this.dueDate = this.nextDayDate()
+  }
 }
 
 </script>
