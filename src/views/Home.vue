@@ -3,8 +3,6 @@
     <template v-if="!isAListSelected.state">
       <div class="main-wrapper flex-column">
         <SearchList :allLists="allLists"/>
-      </div>
-      <div class="main-wrapper flex-column" >
         <AddList :allLists="allLists" />
       </div>
     </template>

@@ -6,7 +6,10 @@
     <div :id="thisList.id" class ="task-list shadow" v-if="!isAListSelected.state || isThisSelected">
       <div class="list-main-container shadow">
         <div class="list-name-container">
-          <h2 class="list-name">{{ thisList.name }}</h2>
+          <div class="list-name">
+            <h2>{{ thisList.name }}</h2>
+          </div>
+          <button class="button shadow delete task-delete" @click="doDelete">Delete</button>
           <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
         </div>
         <div v-if="isThisSelected">
@@ -30,7 +33,7 @@ import AddTask from '../components/AddTask.vue'
 import SearchTask from '../components/SearchTask.vue'
 
 export default {
-  props:['thisList', 'isAListSelected', 'SearchTask' ],
+  props:['thisList', 'isAListSelected', 'SearchTask', 'allLists' ],
   components: { Task, AddTask, SearchTask },
   data(){  
     return{
@@ -49,7 +52,10 @@ export default {
         this.isThisSelected = false
         this.isAListSelected.state = false
       }
-    }
+    },
+    doDelete(){
+      this.allLists.splice(this.allLists.indexOf(this.thisList),1)
+    },
   },
 }
 </script>
@@ -82,10 +88,18 @@ export default {
 }
 
 .list-name{
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
   padding-top: 5px;
   margin-bottom: 5px;
   margin-top: 7px;
+  height: 20px;
 }
+.task-delete{
+  margin-right: 5px;
+}
+
 .expand{
   height: 30px;
 }
