@@ -9,7 +9,7 @@
     
     <template v-for="list in allLists" :key="list">
       <template v-if="list.isShown">
-        <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
+        <TaskList :thisList="list" :isAListSelected="isAListSelected" :allLists="allLists" />
       </template>
     </template>
   </div>
