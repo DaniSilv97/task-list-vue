@@ -129,14 +129,7 @@ nav{
     opacity: 0.8;
     background-color: var(--hover);
 }
-.button{
-    background-color: var(--lightGrey);
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-}
+
 .router-link-active{
     background-color: var(--blue);
 }
