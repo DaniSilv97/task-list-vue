@@ -24,7 +24,7 @@ export default {
   },
   computed:{
     addList(){
-      this.allLists.push({name: this.newListName, id: this.getListId(), tasks:[]})
+      this.allLists.push({name: this.newListName, id: this.getListId(), isShown: true, tasks:[]})
       this.newListName = ''
     },
   }

@@ -1,11 +1,18 @@
 <template>
   <div>
-    <div class="main-wrapper flex-column" v-if="!isAListSelected.state">
-      <AddList :allLists="allLists" />
-    </div>
-  
+    <template v-if="!isAListSelected.state">
+      <div class="main-wrapper flex-column">
+        <SearchList :allLists="allLists"/>
+      </div>
+      <div class="main-wrapper flex-column" >
+        <AddList :allLists="allLists" />
+      </div>
+    </template>
+    
     <template v-for="list in allLists" :key="list">
-      <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
+      <template v-if="list.isShown">
+        <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
+      </template>
     </template>
   </div>
 </template>
@@ -13,10 +20,11 @@
 <script>
 import TaskList from '../components/TaskList.vue'
 import AddList from '../components/AddList.vue'
+import SearchList from '../components/SearchList.vue'
 
 export default {
   name: 'Home',
-  components: { TaskList, AddList },
+  components: { TaskList, AddList, SearchList },
   data(){
     return{
       allLists: [],
