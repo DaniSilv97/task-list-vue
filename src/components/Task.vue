@@ -1,8 +1,8 @@
 <template>
-  <div class="list-task-container">
+  <div class="list-task-container" :id="thisTask.id">
     <input type="checkbox">
     <div class="task-name-date">
-      <h4 class="task-name">Task name</h4>
+      <h4 class="task-name">{{ thisTask.name }}</h4>
       <p class="task-date">doeDate</p>
     </div>
 
@@ -13,7 +13,10 @@
 <script>
 
 export default {
-
+  props:['thisTask'],
+  mounted(){
+    console.log(this.thisTask)
+  }
 }
 </script>
 

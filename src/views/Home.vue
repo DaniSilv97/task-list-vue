@@ -2,24 +2,23 @@
   <div>
     <div class="main-wrapper flex-column">
       <AddList :allLists="allLists" v-if="!isAListSelected.state"/>
-      <AddTask v-if="isAListSelected.state"/>
     </div>
-    <div class="main-wrapper flex-column">
-      <template v-for="list in allLists" :key="list">
+  
+    <template v-for="list in allLists" :key="list">
+      <div class="main-wrapper flex-column">
         <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
-      </template>
-    </div> 
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import TaskList from '../components/TaskList.vue'
 import AddList from '../components/AddList.vue'
-import AddTask from '../components/AddTask.vue'
 
 export default {
   name: 'Home',
-  components: { TaskList, AddList, AddTask },
+  components: { TaskList, AddList },
   data(){
     return{
       allLists: [],

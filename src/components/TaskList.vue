@@ -7,9 +7,10 @@
       </div>
       <div v-if="isThisSelected">
         <div class="list-tasks-container">
-          <Task/>
-          <Task/>
-          <Task/>
+          <template v-for="task in thisList.tasks" :key="task">
+            <Task :thisTask="task"/>
+          </template>
+          <AddTask v-if="isAListSelected.state" :thisList="thisList"/>
         </div>
       </div>
     </div>
@@ -18,13 +19,13 @@
 
 <script>
 import Task from "./Task.vue"
+import AddTask from '../components/AddTask.vue'
 
 export default {
   props:['thisList', 'isAListSelected'],
-  components: { Task },
+  components: { Task, AddTask },
   data(){  
     return{
-      /*showTasks: false,*/
       moreLess: 'More...',
       isThisSelected: false,
     }
@@ -40,15 +41,8 @@ export default {
         this.isThisSelected = false
         this.isAListSelected.state = false
       }
-      
-      
-      console.log(this.isAListSelected)
     }
   },
-  mounted(){
-    console.log('mounted:',this.thisList)
-    console.log(this.isAListSelected)
-  }
 }
 </script>
 

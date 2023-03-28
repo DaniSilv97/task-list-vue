@@ -1,6 +1,6 @@
 <template>
-  <div class="add-list-container">
-    <div class="add-list-text" >
+  <div class="add-container">
+    <div class="add-text list-text" >
       <input class="input-text" type="text" placeholder="e. g. Schoolwork" v-model="newListName">
     </div>
     <button @click="addList" class="add-list-button button">Add task list</button>
@@ -24,18 +24,16 @@ export default {
   },
   computed:{
     addList(){
-      this.allLists.push({name: this.newListName, id: this.getListId() })
+      this.allLists.push({name: this.newListName, id: this.getListId(), tasks:[]})
       this.newListName = ''
-      console.log(this.allLists)
     },
-    
   }
 }
 
 </script>
 
 <style>
-.add-list-container{
+.add-container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,11 +41,13 @@ export default {
   padding-top:10px;
   padding-bottom: 10px;
 }
-.add-list-text{
+.add-text{
   flex: 1 1 0;
   display: flex;
   background-color: var(--darkGrey);
   border-radius: 15px;
+}
+.list-text{
   padding: 10px;
 }
 .input-text{
