@@ -2,7 +2,7 @@
   <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
     <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
     <div class="task-name-date">
-      <h4 class="task-name">{{ thisTask.name }}</h4>
+      <input class="input-text task-name" type="text" v-model="thisTask.name"/>
       <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
     </div>
 
@@ -83,11 +83,15 @@ export default {
   margin-left: 5px;
   margin-right: 10px;
   align-items: center;
+}
+.task-name:valid{
+  color: var(--light);
   font-size: 17px;
   font-weight: 700;
 }
 .task-date{
   font-size: 14px;
+  font-weight: 700;
 }
 .delete{
   height: 30px;
@@ -110,7 +114,7 @@ input[type="checkbox"]:checked{
   border-color: var(--darkestGrey);
   background-color: var(--grey);
 }
-.list-task-container:has(input[type="checkbox"]:checked) h4{
+.list-task-container:has(input[type="checkbox"]:checked) input[type="text"]{
   opacity: 0.3;
 }
 .list-task-container:has(input[type="checkbox"]:checked) p{
