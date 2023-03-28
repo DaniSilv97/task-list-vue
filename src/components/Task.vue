@@ -1,6 +1,6 @@
 <template>
-  <div class="list-task-container" :id="thisTask.id">
-    <input type="checkbox">
+  <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
+    <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
     <div class="task-name-date">
       <h4 class="task-name">{{ thisTask.name }}</h4>
       <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
@@ -16,7 +16,8 @@ export default {
   props:['thisTask', 'thisList'],
   data(){
     return{
-      
+      isTaskDone: false,
+      cssDoneNotDone: ''
     }
   },
   methods:{
@@ -32,7 +33,7 @@ export default {
     },
     doDelete(){
       this.thisList.tasks.splice(this.thisList.tasks.indexOf(this.thisTask),1)
-    }
+    },
   },
   computed:{
     dueDateColor(){
@@ -49,7 +50,15 @@ export default {
                 return('var(--longTime)')
             }
         }
-    } 
+    },
+    isDoneNotDone(){
+      this.thisTask.isDone = this.isTaskDone
+      if(this.isTaskDone){
+        this.cssDoneNotDone = 'task-done'
+      } else{
+        this.cssDoneNotDone = ''
+      }
+    }
   }
 }
 </script>
@@ -76,5 +85,29 @@ export default {
 }
 .delete{
   height: 30px;
+}
+.task-done{
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+input[type="checkbox"]{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  background-color: var(--grey);
+}
+input[type="checkbox"]:hover{
+  background-color: var(--hover);
+}
+input[type="checkbox"]:checked{
+  border-color: var(--darkestGrey);
+  background-color: var(--grey);
+}
+.list-task-container:has(input[type="checkbox"]:checked) h4{
+  opacity: 0.3;
+}
+.list-task-container:has(input[type="checkbox"]:checked) p{
+  opacity: 0.3;
 }
 </style>

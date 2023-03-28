@@ -1,9 +1,9 @@
 <template>
   <div class="add-container">
     <div class="add-text task-text" >
-      <input class="input-text" type="text" placeholder="e. g. Schoolwork" v-model="newTaskName">
+      <input class="input-text shadow" type="text" placeholder="e. g. Schoolwork" v-model="newTaskName">
     </div>
-    <input v-if="dueDate" class="new-date" type="date" v-model="dueDate">
+    <input v-if="dueDate" class="new-date shadow" type="date" v-model="dueDate">
     <button class="add-task-button button" @click="addTask">Add task</button>
   </div>
 </template>
@@ -20,7 +20,12 @@ export default {
   },
   methods:{
     addTask(){
-      this.thisList.tasks.push({name: this.newTaskName, id: this.taskId(), date: this.newTaskDate(), doShow: true})
+      this.thisList.tasks.push({name: this.newTaskName, 
+                                id: this.taskId(), 
+                                date: this.newTaskDate(), 
+                                doShow: true,
+                                isDone: false,
+                                })
       this.newTaskName = ''
     },
     taskId(){
@@ -77,8 +82,6 @@ input.input-text{
   border-radius: 15px;
   padding-left: 5px;
 }
-.new-date
-
 .add-task-button{
   margin-left: 5px;
   height: 30px;

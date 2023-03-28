@@ -1,6 +1,6 @@
 <template>
   <div class="list-search-container">
-    <select class="list-search-select" v-model="selectedList">
+    <select class="list-search-select shadow" v-model="selectedList">
       <option value="">Show all</option>
       <template v-for="list in allLists" :key="list.id">
         <option :value="list.name">{{ list.name }}</option>

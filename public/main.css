@@ -27,7 +27,7 @@ body{
     color: white;
 }
 
-input:not([type="radio"]):not([type="checkbox"]), button {
+input:not([type="radio"]), button {
     appearance: none;
     border: none;
     outline: none;
@@ -123,6 +123,7 @@ nav{
     color: white;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 3px 3px 5px var(--darkestGrey);
 }
 .button:hover{
     opacity: 0.8;
@@ -140,6 +141,6 @@ nav{
     background-color: var(--blue);
 }
 .shadow{
-    box-shadow: 3px 3px 5pxvar(--darkestGrey);
+    box-shadow: 3px 3px 5px var(--darkestGrey);
 }
 

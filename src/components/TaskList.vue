@@ -10,8 +10,7 @@
           <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
         </div>
         <div v-if="isThisSelected">
-          <div class="list-tasks-container">
-            
+          <div class="list-tasks-container shadow">
             <template v-for="task in thisList.tasks" :key="task">
               <template v-if="task.doShow">
                 <Task :thisTask="task" :thisList="thisList"/>

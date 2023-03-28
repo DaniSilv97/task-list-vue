@@ -1,7 +1,7 @@
 <template>
   <div class="add-container">
     <div class="add-text list-text" >
-      <input class="input-text" type="text" placeholder="e. g. Schoolwork" v-model="newListName">
+      <input class="input-text shadow" type="text" placeholder="e. g. Schoolwork" v-model="newListName">
     </div>
     <button @click="addList" class="add-list-button button">Add task list</button>
   </div>
