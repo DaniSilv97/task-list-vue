@@ -79,9 +79,15 @@ export default {
   flex: 1 1 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-left: 5px;
   margin-right: 10px;
   align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+.task-date{
+  font-size: 14px;
 }
 .delete{
   height: 30px;
