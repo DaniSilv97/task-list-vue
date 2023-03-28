@@ -20,7 +20,7 @@ export default {
   },
   methods:{
     addTask(){
-      this.thisList.tasks.push({name: this.newTaskName, id: this.taskId(), date: this.newTaskDate()})
+      this.thisList.tasks.push({name: this.newTaskName, id: this.taskId(), date: this.newTaskDate(), doShow: true})
       this.newTaskName = ''
     },
     taskId(){

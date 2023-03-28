@@ -1,13 +1,11 @@
 <template>
   <div>
-    <div class="main-wrapper flex-column">
-      <AddList :allLists="allLists" v-if="!isAListSelected.state"/>
+    <div class="main-wrapper flex-column" v-if="!isAListSelected.state">
+      <AddList :allLists="allLists" />
     </div>
   
     <template v-for="list in allLists" :key="list">
-      <div class="main-wrapper flex-column">
-        <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
-      </div>
+      <TaskList :thisList="list" :isAListSelected="isAListSelected"/>
     </template>
   </div>
 </template>

@@ -1,16 +1,24 @@
 <template>
-  <div :id="thisList.id" class ="task-list shadow" v-if="!isAListSelected.state || isThisSelected">
-    <div class="list-main-container shadow">
-      <div class="list-name-container">
-        <h2 class="list-name">{{ thisList.name }}</h2>
-        <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
-      </div>
-      <div v-if="isThisSelected">
-        <div class="list-tasks-container">
-          <template v-for="task in thisList.tasks" :key="task">
-            <Task :thisTask="task" :thisList="thisList"/>
-          </template>
-          <AddTask v-if="isAListSelected.state" :thisList="thisList"/>
+  <div class="main-wrapper flex-column" v-if="isThisSelected">
+    <SearchTask :thisList="thisList"/>
+  </div>
+  <div class="main-wrapper flex-column">
+    <div :id="thisList.id" class ="task-list shadow" v-if="!isAListSelected.state || isThisSelected">
+      <div class="list-main-container shadow">
+        <div class="list-name-container">
+          <h2 class="list-name">{{ thisList.name }}</h2>
+          <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
+        </div>
+        <div v-if="isThisSelected">
+          <div class="list-tasks-container">
+            
+            <template v-for="task in thisList.tasks" :key="task">
+              <template v-if="task.doShow">
+                <Task :thisTask="task" :thisList="thisList"/>
+              </template>
+            </template>
+            <AddTask v-if="isAListSelected.state" :thisList="thisList"/>
+          </div>
         </div>
       </div>
     </div>
@@ -20,10 +28,11 @@
 <script>
 import Task from "./Task.vue"
 import AddTask from '../components/AddTask.vue'
+import SearchTask from '../components/SearchTask.vue'
 
 export default {
-  props:['thisList', 'isAListSelected'],
-  components: { Task, AddTask },
+  props:['thisList', 'isAListSelected', 'SearchTask' ],
+  components: { Task, AddTask, SearchTask },
   data(){  
     return{
       moreLess: 'More...',
