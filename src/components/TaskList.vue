@@ -19,7 +19,7 @@
                 <Task :thisTask="task" :thisList="thisList" :allLists="allLists"/>
               </template>
             </template>
-            <AddTask v-if="isAListSelected.state" :thisList="thisList"/>
+            <AddTask v-if="isAListSelected.state" :thisList="thisList" :allLists="allLists"/>
           </div>
         </div>
       </div>
@@ -54,7 +54,10 @@ export default {
       }
     },
     doDelete(){
+      this.isThisSelected = false
+      this.isAListSelected.state = false
       this.allLists.splice(this.allLists.indexOf(this.thisList),1)
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
     },
   },
 }

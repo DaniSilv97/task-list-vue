@@ -11,7 +11,7 @@
 <script>
 
 export default {
-  props:['thisList'],
+  props:['thisList', 'allLists'],
   data(){
     return{
       newTaskName: '',
@@ -27,6 +27,7 @@ export default {
                                 isDone: false,
                                 })
       this.newTaskName = ''
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
     },
     taskId(){
       const newId = new Date().getTime() + '11'

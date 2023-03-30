@@ -34,6 +34,7 @@ export default {
     },
     doDelete(){
       this.thisList.tasks.splice(this.thisList.tasks.indexOf(this.thisTask),1)
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
     },
     getColor(name){
       let result = ''
