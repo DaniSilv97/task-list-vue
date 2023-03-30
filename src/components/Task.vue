@@ -2,7 +2,7 @@
   <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
     <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
     <div class="task-name-date">
-      <input class="input-text task-name" type="text" v-model.lazy="thisTask.name"/>
+      <input class="input-text task-name" type="text" v-model.lazy ="thisTask.name"/>
       <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
     </div>
 
