@@ -50,13 +50,13 @@ export default {
         this.isThisSelected = true
         this.marginTop= 'margin-top'
         this.marginBot= 'margin-bot'
-        //this.isAListSelected.state = true
+        this.isAListSelected.state = true
       } else{
         this.moreLess = 'More...'
         this.isThisSelected = false
         this.marginTop= ''
         this.marginBot= ''
-        //this.isAListSelected.state = false
+        this.isAListSelected.state = false
       }
     },
     doDelete(){
