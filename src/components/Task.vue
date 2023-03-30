@@ -115,7 +115,7 @@ export default {
   align-items: center;
 }
 .task-name:valid{
-  color: var(--light);
+  color: white;
   font-size: 17px;
   font-weight: 700;
 }

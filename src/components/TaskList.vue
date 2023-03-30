@@ -7,7 +7,7 @@
       <div class="list-main-container shadow">
         <div class="list-name-container">
           <div class="list-name">
-            <h2>{{ thisList.name }}</h2>
+            <input class="input-text task-list-name" type="text" v-model.lazy ="thisList.name" @change.lazy="saveEdit"/>
           </div>
           <button class="button shadow delete task-delete" @click="doDelete">Delete</button>
           <button class="button expand shadow" @click="doShowTasks">{{ moreLess }}</button>
@@ -57,8 +57,11 @@ export default {
       this.isThisSelected = false
       this.isAListSelected.state = false
       this.allLists.splice(this.allLists.indexOf(this.thisList),1)
-      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
+      this.saveEdit()
     },
+    saveEdit(){
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
+    }
   },
 }
 </script>
@@ -98,6 +101,11 @@ export default {
   margin-bottom: 5px;
   margin-top: 7px;
   height: 20px;
+}
+.task-list-name:valid{
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
 }
 .task-delete{
   margin-right: 5px;
