@@ -28,7 +28,7 @@ export default {
       allLists: [],
       isAListSelected: {state: false},
     }
-  }
+  },
 }
 </script>
 

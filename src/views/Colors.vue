@@ -23,7 +23,7 @@
             </template>
         </div>
         <div class="ok-container">
-            <router-link @click="doThing" to="/" class="button shadow colors-ok"> Change Colors </router-link>
+            <router-link @click="changeColors" to="/" class="button shadow colors-ok"> Change Colors </router-link>
         </div>
     </div>
 </div>
@@ -35,17 +35,16 @@ export default {
 components:{ ColorPicker },
 data(){
     return{
-        colorPickers: [ 
-            {id: 1, text: 'enoughTime', time: '10', color: '#00d8ff'},
-            {id: 2, text: 'shortTime', time: '2', color: '#0097ff'},
-            {id: 3, text: 'noTime', time: '0', color: '#0070ff'}
-        ]
+        colorPickers: []
     }
 },
 methods:{
-    doThing(){
-        console.log('didThing')
+    changeColors(){
+        localStorage.setItem('colorPickers', JSON.stringify(this.colorPickers)); 
     }
+},
+created(){
+    this.colorPickers = JSON.parse(localStorage.getItem('colorPickers'))
 }
 }
 </script>

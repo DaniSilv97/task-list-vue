@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="color" class="shadow" :value="thisPicker.color">
+        <input type="color" class="shadow" v-model="thisPicker.color" >
     </div>
     </template>
     

@@ -17,7 +17,8 @@ export default {
   data(){
     return{
       isTaskDone: false,
-      cssDoneNotDone: ''
+      cssDoneNotDone: '',
+      colors: []
     }
   },
   methods:{
@@ -34,18 +35,29 @@ export default {
     doDelete(){
       this.thisList.tasks.splice(this.thisList.tasks.indexOf(this.thisTask),1)
     },
+    getColor(name){
+      let result = ''
+      this.colors.forEach((element) => {
+        if(element.text === name){
+          result = element.color
+        } else{
+          return '#eee'
+        }
+      })
+      return result
+    },
   },
   computed:{
     dueDateColor(){
       const currentDateObj = new Date()
       const diffInDays = (this.newDate().getTime() - currentDateObj.getTime()) / (1000 * 3600 * 24);
       if(currentDateObj >= this.newDate()){
-            return('var(--noTime)')
+            return(console.log(this.getColor('noTime')))
         } else {
             if (diffInDays <= 3){
-                return('var(--shortTime)')
+                return(this.getColor('shortTime'))
             } else if (diffInDays <= 10){
-                return('var(--enoughTime)')
+                return(this.getColor('enoughTime'))
             } else{
                 return('var(--longTime)')
             }
@@ -59,6 +71,9 @@ export default {
         this.cssDoneNotDone = ''
       }
     }
+  },
+  created(){
+    this.colors = JSON.parse(localStorage.getItem('colorPickers'))
   }
 }
 </script>
