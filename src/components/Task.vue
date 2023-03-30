@@ -53,7 +53,7 @@ export default {
       const currentDateObj = new Date()
       const diffInDays = (this.newDate().getTime() - currentDateObj.getTime()) / (1000 * 3600 * 24);
       if(currentDateObj >= this.newDate()){
-            return(console.log(this.getColor('noTime')))
+            return(this.getColor('noTime'))
         } else {
             if (diffInDays <= 3){
                 return(this.getColor('shortTime'))
