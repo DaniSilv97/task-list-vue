@@ -47,6 +47,17 @@ export default {
       })
       return result
     },
+    getTime(name){
+      let result = ''
+      this.colors.forEach((element) => {
+        if(element.text === name){
+          result = element.time
+        } else{
+          return '#eee'
+        }
+      })
+      return result
+    },
   },
   computed:{
     dueDateColor(){
@@ -55,9 +66,9 @@ export default {
       if(currentDateObj >= this.newDate()){
             return(this.getColor('noTime'))
         } else {
-            if (diffInDays <= 3){
+            if (diffInDays <= this.getTime('shortTime')){
                 return(this.getColor('shortTime'))
-            } else if (diffInDays <= 10){
+            } else if (diffInDays <= this.getTime('enoughTime')){
                 return(this.getColor('enoughTime'))
             } else{
                 return('var(--longTime)')

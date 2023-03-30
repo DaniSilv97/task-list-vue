@@ -18,6 +18,7 @@
                     <input  :placeholder="'Less than ' + picker.time + ' days'"
                             :thisPicker="picker" 
                             class="input-text color-text shadow" 
+                            v-model="picker.time"
                             type="text">
                 </template>
             </template>
@@ -45,6 +46,11 @@ methods:{
 },
 created(){
     this.colorPickers = JSON.parse(localStorage.getItem('colorPickers'))
+},
+mounted(){
+    document.querySelectorAll('.color-text').forEach(element =>{
+        element.value = ''
+    })
 }
 }
 </script>
