@@ -26,8 +26,9 @@ export default {
     addList(){
       this.allLists.push({name: this.newListName, id: this.getListId(), isShown: true, tasks:[]})
       this.newListName = ''
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists)); 
     },
-  }
+  },
 }
 
 </script>

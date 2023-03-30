@@ -29,6 +29,11 @@ export default {
       isAListSelected: {state: false},
     }
   },
+  created(){
+    if(JSON.parse(localStorage.getItem('ListOfTaskLists'))){
+      this.allLists = JSON.parse(localStorage.getItem('ListOfTaskLists'))
+    } 
+  }
 }
 </script>
 

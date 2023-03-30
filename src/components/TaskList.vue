@@ -16,7 +16,7 @@
           <div class="list-tasks-container shadow">
             <template v-for="task in thisList.tasks" :key="task">
               <template v-if="task.doShow">
-                <Task :thisTask="task" :thisList="thisList"/>
+                <Task :thisTask="task" :thisList="thisList" :allLists="allLists"/>
               </template>
             </template>
             <AddTask v-if="isAListSelected.state" :thisList="thisList"/>

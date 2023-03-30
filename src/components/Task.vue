@@ -2,7 +2,7 @@
   <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
     <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
     <div class="task-name-date">
-      <input class="input-text task-name" type="text" v-model.lazy ="thisTask.name"/>
+      <input class="input-text task-name" type="text" v-model.lazy ="thisTask.name" @change.lazy="saveEdit"/>
       <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
     </div>
 
@@ -13,7 +13,7 @@
 <script>
 
 export default {
-  props:['thisTask', 'thisList'],
+  props:['thisTask', 'thisList', 'allLists'],
   data(){
     return{
       isTaskDone: false,
@@ -70,6 +70,9 @@ export default {
       } else{
         this.cssDoneNotDone = ''
       }
+    },
+    saveEdit(){
+      localStorage.setItem('ListOfTaskLists', JSON.stringify(this.allLists))
     }
   },
   created(){
