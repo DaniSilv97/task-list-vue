@@ -1,8 +1,8 @@
 <template>
-  <div class="main-wrapper flex-column" v-if="isThisSelected">
+  <div class="main-wrapper flex-column" :class="marginTop" v-if="isThisSelected">
     <SearchTask :thisList="thisList"/>
   </div>
-  <div class="main-wrapper flex-column">
+  <div class="main-wrapper flex-column" :class="marginBot">
     <div :id="thisList.id" class ="task-list shadow" v-if="!isAListSelected.state || isThisSelected">
       <div class="list-main-container shadow">
         <div class="list-name-container">
@@ -39,6 +39,8 @@ export default {
     return{
       moreLess: 'More...',
       isThisSelected: false,
+      marginTop: '',
+      marginBot: ''
     }
   },
   methods:{
@@ -46,11 +48,15 @@ export default {
       if(!this.isThisSelected){
         this.moreLess = 'Less...'
         this.isThisSelected = true
-        this.isAListSelected.state = true
+        this.marginTop= 'margin-top'
+        this.marginBot= 'margin-bot'
+        //this.isAListSelected.state = true
       } else{
         this.moreLess = 'More...'
         this.isThisSelected = false
-        this.isAListSelected.state = false
+        this.marginTop= ''
+        this.marginBot= ''
+        //this.isAListSelected.state = false
       }
     },
     doDelete(){
@@ -121,5 +127,11 @@ export default {
   padding-bottom: 1px;
   background-color: var(--darkGrey);
   border-radius: 15px;
+}
+.margin-top{
+  margin-top: 50px;
+}
+.margin-bot{
+  margin-bottom: 50px;
 }
 </style>
