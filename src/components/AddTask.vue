@@ -41,10 +41,12 @@ export default {
       }
     },
     nextDayDate(){
-      const today = new Date()
-      const month = String(today.getMonth()+1).padStart(2,0)
-      const tomorrowDay = today.getDate()+1
-      const nextDay = (today.getFullYear() +'-'+ month +'-'+ tomorrowDay)
+      let today = new Date()
+      let tomorrowDay = new Date(today)
+      tomorrowDay.setDate(today.getDate()+1)
+      const month = String(tomorrowDay.getMonth()+1).padStart(2,0)
+      const nextDay = (today.getFullYear() +'-'+ month +'-'+ String(tomorrowDay.getDate()).padStart(2,0))
+      console.log(nextDay)
       return nextDay
     }
   },
