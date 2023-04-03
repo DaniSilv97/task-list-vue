@@ -3,7 +3,7 @@
     <div class="padding-around">
         <div class="picker-container">
             <template v-for="picker in colorPickers" : key="picker.id">
-                <ColorPicker :thisPicker="picker"/>
+                <ColorPicker :thisPicker="picker" @colorChanged="changeColor($event)"/>
             </template>
         </div>
         <div class="picker-text-container shadow">
@@ -24,7 +24,7 @@
             </template>
         </div>
         <div class="ok-container">
-            <router-link @click="changeColors" to="/" class="button shadow colors-ok"> Change Colors </router-link>
+            <router-link @click="saveChangedColor" to="/" class="button shadow colors-ok"> Change Colors </router-link>
         </div>
     </div>
 </div>
@@ -40,7 +40,14 @@ data(){
     }
 },
 methods:{
-    changeColors(){
+    changeColor(eventData){
+        this.colorPickers.forEach((element)=> {
+            if(element.id === eventData.picker.id){
+                element.color = eventData.newColor
+            }
+        })
+    },
+    saveChangedColor(){
         localStorage.setItem('colorPickers', JSON.stringify(this.colorPickers)); 
     }
 },

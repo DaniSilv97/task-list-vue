@@ -7,11 +7,22 @@
             <router-link to="/colors" class="button shadow">Colors</router-link>
         </nav>
     </div>
+    <!--<div >
+        <Transition name="fade">
+            <div class="main-wrapper" v-show="testeShow"> teste </div>
+        </Transition>
+    </div>
+    <button @click="testeShow = !testeShow"> tarat waer</button>-->
 </template>
 
 <script>
 export default {
     name: 'HeaderBar',
+    data(){
+        return{
+            testeShow: false
+        }
+    }
 }
 </script>
 

@@ -12,12 +12,14 @@
 
 <script>
 export default {
+  name:'SearchList',
   props:['allLists'],
   data(){
     return{
       selectedList: ''
     }
   },
+  //TODO { X } trocar para v-show & v-transition
   methods:{
     sortLists(){
       this.allLists.forEach((element)=>{

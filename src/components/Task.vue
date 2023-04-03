@@ -1,36 +1,41 @@
 <template>
-  <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
-    <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
-    <div class="task-name-date">
-      <input class="input-text task-name" type="text" v-model.lazy ="thisTask.name" @change.lazy="saveEdit"/>
-      <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
-    </div>
+  <Transition name="fade" @after-leave="doDelete"  >
+    <div v-show="teste">
+      <div class="list-task-container shadow" :id="thisTask.id" :class="cssDoneNotDone">
+        <input type="checkbox" class="shadow" v-model="isTaskDone" @change="isDoneNotDone">
+        <div class="task-name-date">
+          <input class="input-text task-name" type="text" v-model.lazy ="thisTask.name" @change.lazy="saveEdit"/>
+          <p class="task-date" :style="`color: ${dueDateColor}`">{{ showDate() }}</p>
+        </div>
 
-    <button class="button shadow delete" @click="doDelete">Delete</button>
-  </div>
+        <button class="button shadow delete" @click="doHide">Delete</button>
+      </div>
+    </div>
+  </Transition>
 </template>
 
 <script>
-
+import dates from '../mixins/dates'
 export default {
+  mixins:[dates],
   props:['thisTask', 'thisList', 'allLists'],
   data(){
     return{
       isTaskDone: false,
       cssDoneNotDone: '',
-      colors: []
+      colors: [],
+      teste: false
     }
   },
+  mounted(){
+    setTimeout(()=>{
+      this.teste = true
+    },1)
+  },
   methods:{
-    newDate(){
-      const date = new Date(this.thisTask.date)
-      return date
-      },
-    showDate(){
-      const months = ['Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-      const selfMonth = parseInt(this.newDate().getMonth())
-      const monthAsString = months[selfMonth]
-      return `${monthAsString} ${this.newDate().getDate()}, ${this.newDate().getFullYear()}`
+    //TODO { X } mixins
+    doHide(){
+      this.teste = false
     },
     doDelete(){
       this.thisList.tasks.splice(this.thisList.tasks.indexOf(this.thisTask),1)
@@ -99,8 +104,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+  /*TODO { X } review padding/margin*/
+  padding: 0px 5px 0px 5px;
   border-radius: 10px;
   background-color: var(--grey);
   height: 40px;
@@ -110,8 +115,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 5px;
-  margin-right: 10px;
+  margin: 0px 10px 0px 5px;
   align-items: center;
 }
 .task-name:valid{
@@ -150,4 +154,24 @@ input[type="checkbox"]:checked{
 .list-task-container:has(input[type="checkbox"]:checked) p{
   opacity: 0.3;
 }
+
+.fade-enter-from{
+  opacity: 0;
+}
+.fade-enter-to{
+  opacity: 1;
+}
+.fade-enter-active{
+  transition: all 1s ease;
+}
+.fade-leave-from{
+  opacity: 1;
+}
+.fade-leave-to{
+  opacity: 0;
+}
+.fade-leave-active{
+  transition: all 1s ease;
+}
+
 </style>

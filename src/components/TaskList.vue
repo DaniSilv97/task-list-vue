@@ -1,4 +1,5 @@
 <template>
+
   <div class="main-wrapper flex-column" :class="marginTop" v-if="isThisSelected">
     <SearchTask :thisList="thisList"/>
   </div>
@@ -25,14 +26,17 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
-import Task from "./Task.vue"
-import AddTask from '../components/AddTask.vue'
-import SearchTask from '../components/SearchTask.vue'
+import Task from "./Task.vue";
+import AddTask from '../components/AddTask.vue';
+import SearchTask from '../components/SearchTask.vue';
+
 
 export default {
+  name:'TaskList',
   props:['thisList', 'isAListSelected', 'SearchTask', 'allLists' ],
   components: { Task, AddTask, SearchTask },
   data(){  
@@ -134,4 +138,5 @@ export default {
 .margin-bot{
   margin-bottom: 50px;
 }
+
 </style>

@@ -10,6 +10,7 @@
 <script>
 
 export default {
+  name:'AddList',
   props:['allLists'],
   data(){
     return{

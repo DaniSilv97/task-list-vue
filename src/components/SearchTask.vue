@@ -20,9 +20,9 @@ export default {
     lookForTask(){
       this.thisList.tasks.forEach((task)=>{
         if(task.name.includes(this.searchTask)){
-          this.thisList.tasks[this.thisList.tasks.indexOf(task)].doShow = true
+         task.doShow = true
         } else{
-          this.thisList.tasks[this.thisList.tasks.indexOf(task)].doShow = false
+          task.doShow = false
         }
       })
     }

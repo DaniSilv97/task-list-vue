@@ -9,8 +9,10 @@
 </template>
 
 <script>
+import dates from '../mixins/dates'
 
 export default {
+  mixins:[dates],
   props:['thisList', 'allLists'],
   data(){
     return{
@@ -40,15 +42,7 @@ export default {
         return this.dueDate
       }
     },
-    nextDayDate(){
-      let today = new Date()
-      let tomorrowDay = new Date(today)
-      tomorrowDay.setDate(today.getDate()+1)
-      const month = String(tomorrowDay.getMonth()+1).padStart(2,0)
-      const nextDay = (today.getFullYear() +'-'+ month +'-'+ String(tomorrowDay.getDate()).padStart(2,0))
-      console.log(nextDay)
-      return nextDay
-    }
+    //TODO { X } mixins
   },
   created(){
     this.dueDate = this.nextDayDate()

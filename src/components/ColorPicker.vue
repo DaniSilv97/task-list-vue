@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="color" class="shadow" v-model="thisPicker.color" >
+        <input type="color" class="shadow" v-model="color" @change="changeColor">
     </div>
     </template>
     
@@ -8,6 +8,20 @@
     
     export default {
         props:['thisPicker'],
+        //TODO { X } $emit
+        data(){
+            return{
+                color: ''
+            }
+        },
+        methods:{
+            changeColor(){
+                this.$emit('colorChanged', {picker: this.thisPicker, newColor: this.color })
+            }
+        },
+        mounted(){
+            this.color = this.thisPicker.color
+        }
     }
     </script>
     

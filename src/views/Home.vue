@@ -16,13 +16,15 @@
 </template>
 
 <script>
+//TODO { X } Import global
+/*
 import TaskList from '../components/TaskList.vue'
 import AddList from '../components/AddList.vue'
 import SearchList from '../components/SearchList.vue'
-
+*/
 export default {
   name: 'Home',
-  components: { TaskList, AddList, SearchList },
+  /*components: { TaskList, AddList, SearchList },*/
   data(){
     return{
       allLists: [],
